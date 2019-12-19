@@ -61,11 +61,10 @@ class StreamProcessor(object):
 
         for _ in range(10):  # Allow at most 10 additions
             digits = self._stream.read(2)  # Read next two digits from stream
-            if not digits or len(digits) == 1:
-                # Stop if end of steam encountered or a single digit processed
+            if len(digits) < 2: # Stop if end of steam encountered or a single digit processed
                 break
             total += int(digits)  # Add number to total
-            count += 1
+            count += 1 # Increment count
             if total >= 200: # Stop early if total reaches 200
                 break
 
